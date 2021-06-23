@@ -9,6 +9,8 @@ import { Profile } from '../../components/Profile';
 import { ButtonAdd } from '../../components/ButtonAdd';
 import { CategorySelect } from '../../components/CategorySelect';
 import { ListHeader } from '../../components/ListHeader';
+import { Appointment } from '../../components/Appointment';
+import { ListDivider } from '../../components/ListDivider';
 
 
 export const Home = () => {
@@ -24,6 +26,30 @@ export const Home = () => {
       }, 
       category: '1',
       date: '25/06 às 20:40h',
+      description: 'É hoje que vamos para o torneio mundial de minecraft',
+    },
+    {
+      id: '1',
+      guild: {
+        id: '1',
+        name: 'Lendários',
+        icon: null,
+        owner: true,
+      }, 
+      category: '1',
+      date: '26/06 às 20:40h',
+      description: 'É hoje que vamos para o torneio mundial de minecraft',
+    },
+    {
+      id: '2',
+      guild: {
+        id: '1',
+        name: 'Lendários',
+        icon: null,
+        owner: false,
+      }, 
+      category: '3',
+      date: '27/06 às 20:40h',
       description: 'É hoje que vamos para o torneio mundial de minecraft',
     }
   ];
@@ -55,8 +81,13 @@ export const Home = () => {
                 data={appointment}
                 keyExtractor={item => item.id}
                 renderItem={({item}) => (
-                  <></>
+                  <Appointment
+                    data={item}
+                  />
                 )}
+                ItemSeparatorComponent={() => <ListDivider />}
+                style={styles.matches}
+                showsVerticalScrollIndicator={false}
               />
           </View>
        </View>   
