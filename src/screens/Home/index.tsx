@@ -29,7 +29,7 @@ export const Home = () => {
       description: 'É hoje que vamos para o torneio mundial de minecraft',
     },
     {
-      id: '1',
+      id: '2',
       guild: {
         id: '1',
         name: 'Lendários',
@@ -41,7 +41,7 @@ export const Home = () => {
       description: 'É hoje que vamos para o torneio mundial de minecraft',
     },
     {
-      id: '2',
+      id: '3',
       guild: {
         id: '1',
         name: 'Lendários',

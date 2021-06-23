@@ -28,6 +28,7 @@ export const CategorySelect = ({categorySelected, setCategory}:Props ) => {
                         icon={category.icon}
                         checked={category.id === categorySelected}
                         onPress={() => setCategory(category.id)}
+                        hasCheckedBox={true}
                     />
                 ))
             }
