@@ -18,7 +18,7 @@ export const Category = ({
   title,
   icon: Icon,
   checked = false,
-  hasCheckedBox = true,
+  hasCheckedBox = false,
   ...rest
 }: Props) => {
   const { secondary40, secondary50, secondary70, secondary85 } = theme.colors;

@@ -11,6 +11,7 @@ import { CategorySelect } from '../../components/CategorySelect';
 import { ListHeader } from '../../components/ListHeader';
 import { Appointment } from '../../components/Appointment';
 import { ListDivider } from '../../components/ListDivider';
+import { Background } from '../../components/Background';
 
 
 export const Home = () => {
@@ -59,10 +60,11 @@ export const Home = () => {
   };
 
   return (
-    <View style={styles.container} >
-        <View style={styles.header} >
-            <Profile />
-            <ButtonAdd />
+    <Background>
+      <View style={styles.header} >
+          <Profile />
+          <ButtonAdd />
+
         </View>
 
         <View>
@@ -89,8 +91,8 @@ export const Home = () => {
                 style={styles.matches}
                 showsVerticalScrollIndicator={false}
               />
-          </View>
-       </View>   
-    </View>
+            </View>
+      </View>
+    </Background>
   );
 }
