@@ -3,6 +3,7 @@ import {
     View,
     FlatList
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {styles} from './styles';
 
 import { Profile } from '../../components/Profile';
@@ -11,9 +12,13 @@ import { CategorySelect } from '../../components/CategorySelect';
 import { ListHeader } from '../../components/ListHeader';
 import { Appointment } from '../../components/Appointment';
 import { ListDivider } from '../../components/ListDivider';
+import { Background } from '../../components/Background';
+
 
 
 export const Home = () => {
+  const navigation = useNavigation();
+
   const [category, setCategory] = useState('');
   const appointment = [
     {
@@ -29,7 +34,7 @@ export const Home = () => {
       description: 'É hoje que vamos para o torneio mundial de minecraft',
     },
     {
-      id: '1',
+      id: '2',
       guild: {
         id: '1',
         name: 'Lendários',
@@ -41,7 +46,7 @@ export const Home = () => {
       description: 'É hoje que vamos para o torneio mundial de minecraft',
     },
     {
-      id: '2',
+      id: '3',
       guild: {
         id: '1',
         name: 'Lendários',
@@ -58,12 +63,23 @@ export const Home = () => {
     categoryId === category ? setCategory('') : setCategory(categoryId)
   };
 
+  function handleAppointmentDetails() {
+    navigation.navigate('AppointmentDetails')
+  };
+
+  function handleAppointmentCreate() {
+    navigation.navigate('AppointmentCreate')
+  };
+
   return (
-    <View style={styles.container} >
-        <View style={styles.header} >
-            <Profile />
-            <ButtonAdd />
-        </View>
+    <Background>
+      <View style={styles.header} >
+        <Profile />
+        <ButtonAdd 
+          onPress={handleAppointmentCreate}
+        />
+
+      </View>
 
         <View>
             <CategorySelect 
@@ -83,14 +99,15 @@ export const Home = () => {
                 renderItem={({item}) => (
                   <Appointment
                     data={item}
+                    onPress={handleAppointmentDetails}
                   />
                 )}
                 ItemSeparatorComponent={() => <ListDivider />}
                 style={styles.matches}
                 showsVerticalScrollIndicator={false}
               />
-          </View>
-       </View>   
-    </View>
+            </View>
+      </View>
+    </Background>
   );
 }
