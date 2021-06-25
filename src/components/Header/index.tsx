@@ -37,10 +37,12 @@ export const Header = ({title, action}:Props ) => {
 
             <Text style={styles.title} >{title}</Text>
 
-            {action && (
+            { action ? (
                 <View>
                     {action}
                 </View>
+            ) : (
+                <View style={{width: 24}} />
             )}
         </LinearGradient>
     )
