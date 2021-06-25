@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { theme } from '../global/styles/theme';
 
 import { Home } from '../screens/Home';
-import { SignIn } from '../screens/SingIn/index';
 import { AppointmentDetails } from '../screens/AppointmentDetails';
 import { AppointmentCreate } from '../screens/AppointmentCreate';
 
@@ -19,10 +18,6 @@ export function AuthRoutes() {
         }
       }}
     >
-      <Screen 
-        name="SingIn"
-        component={SignIn}
-      />
       <Screen 
         name="Home"
         component={Home}
