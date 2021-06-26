@@ -6,13 +6,13 @@ import React, {
 } from 'react';
 import * as AuthSession from 'expo-auth-session';
 
-import {
-    CLIENT_ID,
-    REDIRECT_URI,
-    RESPONSE_TYPE,
-    SCOPE,
-    CDN_IMAGE
-} from '../config';
+
+const { CLIENT_ID } = process.env;
+const { REDIRECT_URI } = process.env;
+const { RESPONSE_TYPE } = process.env;
+const { SCOPE } = process.env;
+const { CDN_IMAGE } = process.env;
+
 import { api } from '../services/api';
 
 type User = {
@@ -36,7 +36,8 @@ type AuthProviderProps = {
 
 type Authorization = AuthSession.AuthSessionResult & {
     pamars: {
-        access_token: string;
+        access_token?: string;
+        error?: string;
     }
 }
 
@@ -54,7 +55,7 @@ const AuthProvider = ({children}:AuthProviderProps ) => {
             
             const { type, pamars } = await AuthSession.startAsync({ authUrl }) as Authorization;
 
-                if(type === "success") {
+                if(type === "success" && !pamars.error) {
                     api.defaults.headers.autorization = `Bearer ${pamars.access_token}`
 
                     const userInfo = await api.get('/users/@me')
@@ -68,14 +69,11 @@ const AuthProvider = ({children}:AuthProviderProps ) => {
                         firstName,
                         token: pamars.access_token,
                     });
-
-                    setIsLoading(false)
-                } else {
-                    setIsLoading(false)
-                }
-
+                } 
         } catch {
             throw new Error('Não foi possível autenticar!')
+        } finally {
+            setIsLoading(false)
         }
     }
 
