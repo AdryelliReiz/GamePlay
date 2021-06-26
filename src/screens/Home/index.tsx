@@ -56,7 +56,43 @@ export const Home = () => {
       category: '3',
       date: '27/06 às 20:40h',
       description: 'É hoje que vamos para o torneio mundial de minecraft',
-    }
+    },
+    {
+      id: '4',
+      guild: {
+        id: '1',
+        name: 'Lendários',
+        icon: null,
+        owner: false,
+      }, 
+      category: '3',
+      date: '27/06 às 20:40h',
+      description: 'É hoje que vamos para o torneio mundial de minecraft',
+    },
+    {
+      id: '5',
+      guild: {
+        id: '1',
+        name: 'Lendários',
+        icon: null,
+        owner: false,
+      }, 
+      category: '3',
+      date: '27/06 às 20:40h',
+      description: 'É hoje que vamos para o torneio mundial de minecraft',
+    },
+    {
+      id: '6',
+      guild: {
+        id: '1',
+        name: 'Lendários',
+        icon: null,
+        owner: false,
+      }, 
+      category: '3',
+      date: '27/06 às 20:40h',
+      description: 'É hoje que vamos para o torneio mundial de minecraft',
+    },
   ];
 
   function handleCategorySelect(categoryId: string) {
@@ -81,33 +117,31 @@ export const Home = () => {
 
       </View>
 
-        <View>
-            <CategorySelect 
-              categorySelected={category}
-              setCategory={handleCategorySelect}
+        <CategorySelect 
+          categorySelected={category}
+          setCategory={handleCategorySelect}
+        />
+
+        <ListHeader 
+          title="Partidas agendadas"
+          subtitle="Total 6"
+        />
+
+        <FlatList 
+          data={appointment}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => (
+            <Appointment
+              data={item}
+              onPress={handleAppointmentDetails}
             />
+          )}
+          ItemSeparatorComponent={() => <ListDivider />}
+          contentContainerStyle={{paddingBottom: 69}}
+          style={styles.matches}
+          showsVerticalScrollIndicator={false}
+        />
 
-            <View style={styles.content} >
-              <ListHeader 
-                title="Partidas agendadas"
-                subtitle="Total 6"
-              />
-
-              <FlatList 
-                data={appointment}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => (
-                  <Appointment
-                    data={item}
-                    onPress={handleAppointmentDetails}
-                  />
-                )}
-                ItemSeparatorComponent={() => <ListDivider />}
-                style={styles.matches}
-                showsVerticalScrollIndicator={false}
-              />
-            </View>
-      </View>
     </Background>
   );
 }
