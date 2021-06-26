@@ -46,6 +46,7 @@ export function AppointmentCreate(){
   function handleCategorySelect(categoryId: string) {
     setCategory(categoryId)
   }
+
   return (
     <KeyboardAvoidingView 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height' }
@@ -75,7 +76,7 @@ export function AppointmentCreate(){
               <View style={styles.select}>
                 {
                   guild.icon 
-                  ? <GuildIcon /> 
+                  ? <GuildIcon guildId={guild.id} iconId={guild.icon} /> 
                   : <View style={styles.image} />
                 }
 
