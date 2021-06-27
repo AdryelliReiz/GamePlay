@@ -37,11 +37,11 @@ export const Category = ({
             checked ? styles.checked : styles.check
           }/>}
 
-            {//<Icon
-             //   width={48}
-             //   height={48}
-             //  />
-            }
+            <Icon
+              width={48}
+              height={48}
+            />
+            
 
           <Text style={styles.title}>
             { title }
