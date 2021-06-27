@@ -23,15 +23,15 @@ export const Home = () => {
   const navigation = useNavigation();
 
   const [category, setCategory] = useState('');
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const [appointments, setAppointments] = useState<AppointmentProps[]>([]);
 
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory('') : setCategory(categoryId)
   };
 
-  function handleAppointmentDetails() {
-    navigation.navigate('AppointmentDetails')
+  function handleAppointmentDetails(guildSelected: AppointmentProps) {
+    navigation.navigate('AppointmentDetails', {guildSelected})
   };
 
   function handleAppointmentCreate() {
@@ -76,7 +76,7 @@ export const Home = () => {
           : <>
             <ListHeader 
               title="Partidas agendadas"
-              subtitle="Total 6"
+              subtitle={`Total ${appointments.length}`}
             />
 
             <FlatList 
@@ -85,7 +85,7 @@ export const Home = () => {
               renderItem={({item}) => (
                 <Appointment
                   data={item}
-                  onPress={handleAppointmentDetails}
+                  onPress={() => handleAppointmentDetails(item)}
                 />
               )}
               ItemSeparatorComponent={() => <ListDivider />}
